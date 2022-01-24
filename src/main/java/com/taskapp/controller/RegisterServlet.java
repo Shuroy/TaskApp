@@ -19,7 +19,7 @@ public class RegisterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		PrintWriter out = resp.getWriter();
-		out.write("Hello world");
+		out.write("Hello world.");
 		out.write("Servelet Called");
 
 		String name = req.getParameter("user name");
