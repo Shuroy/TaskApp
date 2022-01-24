@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Task App</title>
+</head>
+<body>
+<h1>Register Account</h1>
+<form action="register" method="post" name="user_form" onsubmit="return validate()">
+	<table>
+		<tr>
+		
+		<td>Name:</td>
+		<td><input type="text" name="user_name" placeholder="Enter your name" required pattern="[a-zA-Z]{3,}" title="it only accept 3 or more chars"></td>
+		
+		</tr>
+		<tr>
+		
+		<td>Email:</td>
+		<td><input type="email" name="user_email" placeholder="Enter your email" required></td>
+		
+		</tr>
+		<tr>
+		
+		<td>Password:</td>
+		<td><input type="password" name="pass" placeholder="Enter your password" required></td>
+		
+		</tr>
+		<tr>
+		
+		<td><input type="submit" value="Submit"></td>
+		<td><input type="reset" ></td>
+		
+		</tr>
+	</table>
+</form>
+
+
+<script>
+
+function validate() {
+	   // read form data
+	   let name = document.user_form.user_name.value;
+	   let email = document.user_form.user_email.value;
+	   let pass = document.user_form.pass.value;
+	   console.log(name);
+	   console.log(email);
+	   let flag = true;
+	   var validRegex = "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/";
+	   
+	   // client side form validation logic
+	   if(name==""){
+	      alert("Name is required");
+	      frm.pname.focus(); // focus the text box
+	      flag = false;
+	   } else if(name.length < 3) { // min length
+	      alert("Name must have minimum of 3 Characters");
+	      frm.pname.focus(); // focus the text box
+	      flag = false;
+	   }
+	   if(email==""){
+	      alert("User email is required");
+	      frm.page.focus(); // focus the text box
+	      flag = false;
+	   } else if(email.match(validRegex)) { // must be email
+	      alert("User email is not a email");
+	      frm.page.focus(); // focus the text box
+	      flag = false;
+	   } 
+	   return flag;
+	   // true => form is error free
+	   // false => form validation errors
+	}
+</script>
+</body>
+</html>
