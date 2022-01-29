@@ -22,18 +22,19 @@ public class LoginServlet extends HttpServlet {
 //		doGet(request, response);
 		
 		PrintWriter out=resp.getWriter();
-		out.write("Hello world");
+		//out.write("Hello world");
 		out.write("Servelet Called");
 		
-		String uname=req.getParameter("user name");
-		String uemail=req.getParameter("user email");
+		//String uname=req.getParameter("user name");
+		String email=req.getParameter("email");
 		String password=req.getParameter("pass");
 		
-		User user=new User(uname, uemail, password);
+		User user=new User("" ,email,password);
 		
 		UserDaoImpl userDao=new UserDaoImpl();
-		out.write(uemail);
-		out.write(password);
+		
+		//pstmt.setString(1, user.getEmail());
+
 		boolean flag=userDao.findUser(user);
 		if(flag)
 		{
@@ -42,6 +43,8 @@ public class LoginServlet extends HttpServlet {
 		else
 		{
 		out.write("\nInvalid Login Crendential");	
+		out.write(user.getEmail());
+				out.write(user.getPassword());
 		}
 	}
 

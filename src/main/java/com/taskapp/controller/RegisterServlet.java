@@ -19,18 +19,17 @@ public class RegisterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		PrintWriter out = resp.getWriter();
-		out.write("Hello world.");
-		out.write("Servelet Called");
 
-		String name = req.getParameter("user name");
-		String email = req.getParameter("user email");
+		String name = req.getParameter("user_name");
+		String email = req.getParameter("user_email");
 		String password = req.getParameter("pass");
 
 		User user = new User(name, email, password);
+		//out.write(name+" "+email+" "+password);
 
 		UserDaoImpl userDao = new UserDaoImpl();
 
-		boolean flag = userDao.insertUser(user);
+		boolean flag = userDao.insertUser(user); 
 		if (flag) {
 			out.write("\ninserted successfully");
 		} else {
