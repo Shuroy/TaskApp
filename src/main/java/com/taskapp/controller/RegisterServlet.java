@@ -1,4 +1,8 @@
 package com.taskapp.controller;
+import javax.servlet.RequestDispatcher;
+
+
+
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -31,9 +35,15 @@ public class RegisterServlet extends HttpServlet {
 
 		boolean flag = userDao.insertUser(user); 
 		if (flag) {
-			out.write("\ninserted successfully");
+			//out.write("\ninserted successfully");
+           resp.sendRedirect("login.jsp");
+
+
 		} else {
 			out.write("\nnot inserted");
+           // RequestDispatcher req = request.getRequestDispatcher("register_2.jsp");
+           // req.forward(request, response);
+
 		}
 
 	}

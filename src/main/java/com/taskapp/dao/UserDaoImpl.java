@@ -36,7 +36,7 @@ public class UserDaoImpl implements UserDao{
 	public boolean findUser(User user) {
 		// TODO Auto-generated method stub
 		
-		String insert="insert into user_details values(?,?)";
+		//String insert="insert into user_details values(?,?)";
 		String qury="select * from user_details where email=? and password=?";
 		Connection con=Connection123.getDBConnection();
 		boolean result=false;

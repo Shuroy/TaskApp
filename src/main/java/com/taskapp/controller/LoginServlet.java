@@ -1,4 +1,7 @@
 package com.taskapp.controller;
+import javax.servlet.RequestDispatcher;
+
+
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -22,8 +25,6 @@ public class LoginServlet extends HttpServlet {
 //		doGet(request, response);
 		
 		PrintWriter out=resp.getWriter();
-		//out.write("Hello world");
-		out.write("Servelet Called");
 		
 		//String uname=req.getParameter("user name");
 		String email=req.getParameter("email");
@@ -36,15 +37,18 @@ public class LoginServlet extends HttpServlet {
 		//pstmt.setString(1, user.getEmail());
 
 		boolean flag=userDao.findUser(user);
-		if(flag)
+		if(flag) //
 		{
+            
 			out.write("\nLogin successfully");
+			resp.sendRedirect("welcome.jsp");
+
 		}
 		else
 		{
-		out.write("\nInvalid Login Crendential");	
-		out.write(user.getEmail());
-				out.write(user.getPassword());
+            //RequestDispatcher req = request.getRequestDispatcher("register.jsp");
+            //req.forward(request, response);
+	
 		}
 	}
 
