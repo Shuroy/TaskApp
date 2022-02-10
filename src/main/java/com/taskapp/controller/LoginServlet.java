@@ -41,11 +41,13 @@ public class LoginServlet extends HttpServlet {
 		{
             
 			out.write("\nLogin successfully");
-			resp.sendRedirect("welcome.jsp");
+			resp.sendRedirect("Addtask.jsp");
 
 		}
 		else
 		{
+			out.write("\nInvlid user");
+
             //RequestDispatcher req = request.getRequestDispatcher("register.jsp");
             //req.forward(request, response);
 	

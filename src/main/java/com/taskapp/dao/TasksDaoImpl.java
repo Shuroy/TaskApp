@@ -16,7 +16,7 @@ public class TasksDaoImpl implements TasksDao{
 	public boolean insertTask(Task task) {
 		// TODO Auto-generated method stub
 		
-		String insert="insert into user_task(taskname,priority,createdby,status,createddate) values(?,?,?,?)";
+		String insert="insert into user_task(taskname,priority,createdby,status,createddate) values(?,?,?,?,?)";
 		Connection con=Connection123.getDBConnection();
 		boolean result=false;
 		try {
@@ -25,25 +25,33 @@ public class TasksDaoImpl implements TasksDao{
 			pstmt.setString(2, task.getPriority());
 			pstmt.setString(3, task.getCreatedBy());
 			pstmt.setString(4, task.getStatus());
-   		    //pstmt.setDate(5,  (Date) task.getCreatedDate());
+   		    pstmt.setDate(5,  (Date) task.getCreatedDate());
+   		    
+   			System.out.println(task.getTaskName());
+   			System.out.println(task.getPriority());
+   			System.out.println(task.getCreatedBy());
+
 			
-			result=pstmt.executeUpdate()>0;
+			result = pstmt.executeUpdate()>0;
 			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		
 		return result;
 	}
 	
 	
 	public  TasksDaoImpl() {
+		
 		// TODO Auto-generated method stub
 		 List tasks = new ArrayList();
 		
 		String insert="select * from user_task";
+
 		Connection con=Connection123.getDBConnection();
 		
 		boolean result=false;
@@ -68,5 +76,40 @@ public class TasksDaoImpl implements TasksDao{
 			e.printStackTrace();
 		}
 		
+	}
+
+
+	@Override
+	public List<Task> taskList() {
+		
+		List <Task> tasks = new ArrayList < > ();
+		
+			String query="select * from user_task";
+
+			Connection con=Connection123.getDBConnection();
+			
+			boolean result=false;
+			try {
+				
+				PreparedStatement ps = con.prepareStatement(query);
+	            ResultSet rs = ps.executeQuery();
+	            while (rs.next()) {
+	                Task userBean = new Task();
+	                
+	                userBean.setTaskName(rs.getString("taskname"));
+	                userBean.setCreatedBy(rs.getString("createdby"));                             
+	                tasks.add(userBean);
+	            }
+//				PreparedStatement pstmt=con.prepareStatement(insert);
+						
+//				result=pstmt.executeUpdate()>0;
+				
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return tasks;
 	}
 }

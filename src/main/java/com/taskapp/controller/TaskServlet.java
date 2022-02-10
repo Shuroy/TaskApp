@@ -36,26 +36,29 @@ public class TaskServlet extends HttpServlet
 		String createdBy = "Shubham";
 		String status = "PENDING";
 		Date d = new Date(0);
-//		String uemail=req.getParameter("uemail");
-//		String password=req.getParameter("pass");
-//		
-		Task task=new Task(taskName, priority, createdBy, status,d);
+		out.write(priority);
+		out.write(createdBy);
+		out.write(status);
+		out.write(taskName);
+//out.write(d);
+
+		Task task=new Task(taskName, priority,createdBy,status, d);
 		
-		TasksDaoImpl taskDao=new TasksDaoImpl();
+		TasksDaoImpl taskDao = new TasksDaoImpl();
 		
-		boolean flag=taskDao.insertTask(task);
-		out.write("Servelet Call");
+		  boolean flag =taskDao.insertTask(task);
+		  
+		  
 		if(flag)
 		{
 			out.write("\ninserted successfully");
+			resp.sendRedirect("tasklist.jsp");
+
 		}
 		else
 		{
 		out.write("\nnot inserted");	
 		}
-		
-		
-		
 	}
-
 }
+

@@ -40,7 +40,9 @@ public class RegisterServlet extends HttpServlet {
 
 
 		} else {
-			out.write("\nnot inserted");
+	           resp.sendRedirect("register.jsp");
+
+			//.write("\nnot inserted");
            // RequestDispatcher req = request.getRequestDispatcher("register_2.jsp");
            // req.forward(request, response);
 

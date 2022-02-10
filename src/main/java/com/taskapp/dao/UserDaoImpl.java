@@ -1,5 +1,4 @@
 package com.taskapp.dao;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -20,15 +19,11 @@ public class UserDaoImpl implements UserDao{
 			pstmt.setString(1, user.getName());
 			pstmt.setString(2, user.getEmail());
 			pstmt.setString(3,user.getPassword());
-			
 			result=pstmt.executeUpdate()>0;
-			
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		}	
 		return result;
 	}
 
