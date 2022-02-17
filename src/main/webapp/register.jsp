@@ -32,6 +32,9 @@
 		<td><input type="reset" value=Reset ></td>
 		
 		</tr>
+		<h1>Add Task</h1>
+		<a href="/TaskApp/Addtask.jsp">Add</a>
+		<a href="tasklist.jsp">Show TaskList</a>
 	</table>
 </form>
 

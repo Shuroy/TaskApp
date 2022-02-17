@@ -8,7 +8,7 @@ public class Task {
 	private String priority;
 	private String createdBy;
 	private String status;
-	private Date createdDate;
+	private String createdDate;
 
 	public String getTaskName() {
 		return taskName;
@@ -42,15 +42,15 @@ public class Task {
 		this.status = status;
 	}
 
-	public Date getCreatedDate() {
+	public String getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
+	public void setCreatedDate(String string) {
+		this.createdDate = string;
 	}
 
-	public Task(String taskName, String priority, String createdBy, String status, Date createdDate) {
+	public Task(String taskName, String priority, String createdBy, String status, String createdDate) {
 		super();
 		this.taskName = taskName;
 		this.priority = priority;
@@ -64,9 +64,10 @@ public class Task {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void setId(int id) {
-		// TODO Auto-generated method stub
-
-	}
+	/*
+	 * public void setId(int id) { // TODO Auto-generated method stub
+	 * 
+	 * }
+	 */
 
 }

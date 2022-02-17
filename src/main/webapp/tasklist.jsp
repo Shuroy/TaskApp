@@ -1,40 +1,86 @@
-
- 	
-<!DOCTYPE html>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="com.taskapp.dao.Connection123"%>
+<%@page import="java.sql.Connection"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+  pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>	
-<meta charset="ISO-8859-1">
-<title>Task App</title>
-
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
 </head>
-<body>
-<h1>Add Task</h1>
-<a href="/TaskApp/Addtask.jsp">Add</a>
-<form action="lisklist"  method="get">
-	<table border="1" cellpadding="5">
-		<tr>
-			<th>S.No</th>
-			<th>Task Name</th>
-			<th>Priority</th>
-			<th>Created By</th>
-			<th>Status</th>
-			<th>Created Date</th>
-			<th>Action</th>
-		</tr>
-		    
-			<tr>
-			<c:forEach items="tasklist12" var="u">
-				<th>1</th>
-				<th></th>
-				<th>Low</th>
-				<th>Shubhan</th>
-				<th>Pending</th>
-				<th>02/02/22</th>
-				<th><a href="#" >Edit</a> &nbsp; &nbsp; <a href="#" >Delete</a> </th>
-				
-			</tr> </c:forEach>
-		
-	</table>
-</form>
+<style>
+<!--
+a {
+  text-decoration: none;
+}
+-->
+</style>
+<body bgcolor="#00FFFF">
+  <form action="">
+    <h1 align="center">Task Management</h1>
+    <h2 align="center">
+      <a href="Addtask.jsp">Add New Task</a><br>
+    </h2>
+    <h1 align="center">List of Tasks</h1>
+    <table border="1" align="center" cellpadding="5" style="font-size: 150%; background-color: window;">
+      <tr>
+			<th id="2">Task Name</th>
+			<th id="3">Priority</th>
+			<th id="4">Created By</th>
+			<th id="5">Status</th>
+			<th id="6">Created Date</th>
+			<th id="7">Action</th>
+      </tr>
+      <%
+        Connection con = Connection123.getDBConnection();
+        Statement statement = con.createStatement();
+        ResultSet resultSet = statement.executeQuery("select * from user_task");
+        while (resultSet.next()) {
+      %>
+
+      <tr>
+        <td>
+          <%
+            out.print(resultSet.getString(1));
+          %>
+        </td>
+        <td>
+          <%
+            out.print(resultSet.getString(2));
+          %>
+        </td>
+        <td>
+          <%
+            out.print(resultSet.getString(3));
+          %>
+        </td>
+        <td>
+          <%
+            out.print(resultSet.getString(4));
+          %>
+        </td>
+        <td>
+          <%
+            out.print(resultSet.getString(5));
+          %>
+        </td>
+        
+
+        <form action="MyServlet" method="post">
+          <td>
+          <a value="Edit" name="Action" href="">Edit</a> 
+          <a href="delete.jsp">Delete</a>&nbsp;&nbsp;&nbsp;</td>
+      </tr>
+      </form>
+      
+      <%
+}
+%>
+
+
+    </table>
+  </form>
 </body>
 </html>

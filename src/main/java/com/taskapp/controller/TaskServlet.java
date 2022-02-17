@@ -2,9 +2,8 @@ package com.taskapp.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +15,7 @@ import com.taskapp.dao.TasksDaoImpl;
 import com.taskapp.model.Task;
 
 
-@WebServlet("/task")
+@WebServlet("/TaskServlet")
 public class TaskServlet extends HttpServlet
 {
 	
@@ -40,9 +39,8 @@ public class TaskServlet extends HttpServlet
 		out.write(createdBy);
 		out.write(status);
 		out.write(taskName);
-//out.write(d);
 
-		Task task=new Task(taskName, priority,createdBy,status, d);
+		Task task=new Task(taskName, priority,createdBy,status, String.valueOf(d));
 		
 		TasksDaoImpl taskDao = new TasksDaoImpl();
 		
@@ -52,7 +50,7 @@ public class TaskServlet extends HttpServlet
 		if(flag)
 		{
 			out.write("\ninserted successfully");
-			resp.sendRedirect("tasklist.jsp");
+			resp.sendRedirect("register.jsp");
 
 		}
 		else

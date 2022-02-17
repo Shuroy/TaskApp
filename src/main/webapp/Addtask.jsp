@@ -6,7 +6,7 @@
 </head>
 	<body>
 		<h1>Add Task</h1>
-		<form action="task"  method="post">
+		<form  name ="task" action="TaskServlet"  method="post">
 			<table>
 				<tr>
 					<td>Name:</td>
