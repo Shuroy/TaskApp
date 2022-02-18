@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Task App</title>
+<title>TaskApp</title>
 </head>
 	<body>
 		<h1>Add Task</h1>

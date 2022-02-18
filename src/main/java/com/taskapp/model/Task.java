@@ -64,10 +64,5 @@ public class Task {
 		// TODO Auto-generated constructor stub
 	}
 
-	/*
-	 * public void setId(int id) { // TODO Auto-generated method stub
-	 * 
-	 * }
-	 */
 
 }

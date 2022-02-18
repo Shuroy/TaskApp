@@ -26,9 +26,6 @@ public class TaskListsevlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//PrintWriter out = resp.getWriter();
-		//out.write("Hello world Task List");
-		//boolean flag = false;
 		TasksDaoImpl taskDao = new TasksDaoImpl();
 
 	}
@@ -39,23 +36,17 @@ public class TaskListsevlet extends HttpServlet {
 		System.out.println("inside TaskList doGet method");
 		
 		try {
-			//PrintWriter out = response.getWriter();
 			TasksDaoImpl impl = new TasksDaoImpl();
 			TasksDaoImpl taskDao = new TasksDaoImpl();
 			List<Task> listTask = new ArrayList<Task>();
 			listTask = taskDao.taskList();
-			//System.out.println("List of Tasks :: " +listTask);
 			request.setAttribute(" ", listTask);
-			RequestDispatcher req = request.getRequestDispatcher("tasklist.jsp");
+			RequestDispatcher req = request.getRequestDispatcher("TaskList.jsp");
 			req.forward(request, response);
 			
 		} catch (SQLException e) {
 			e.getMessage();
 		}
-		//AnswerDAOImpl answerDao = new AnswerDAOImpl();
-		//List<Answer> answerList;
-		//RequestDispatcher dispatcher = req.getRequestDispatcher("tasklist.jsp");
-		//dispatcher.forward(req, resp);
 
 	}
 

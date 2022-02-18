@@ -21,7 +21,7 @@ a {
   <form action="">
     <h1 align="center">Task Management</h1>
     <h2 align="center">
-      <a href="Addtask.jsp">Add New Task</a><br>
+      <a href="AddTask.jsp">Add New Task</a><br>
     </h2>
     <h1 align="center">List of Tasks</h1>
     <table border="1" align="center" cellpadding="5" style="font-size: 150%; background-color: window;">
@@ -83,4 +83,4 @@ a {
     </table>
   </form>
 </body>
-</html>
+</html>S
