@@ -23,7 +23,7 @@ import com.taskapp.model.Task;
 @WebServlet("/TaskListservlet")
 public class TaskListsevlet extends HttpServlet {
 
-	@Override
+	@Override 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		TasksDaoImpl taskDao = new TasksDaoImpl();
@@ -41,7 +41,7 @@ public class TaskListsevlet extends HttpServlet {
 			List<Task> listTask = new ArrayList<Task>();
 			listTask = taskDao.taskList();
 			request.setAttribute(" ", listTask);
-			RequestDispatcher req = request.getRequestDispatcher("TaskList.jsp");
+			RequestDispatcher req = request.getRequestDispatcher("taskList.jsp");
 			req.forward(request, response);
 			
 		} catch (SQLException e) {

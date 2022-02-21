@@ -7,11 +7,11 @@
 <title>Edit Task</title>
 </head>
 <body bgcolor="#00FFFF">
-  <form action="EditTaskServlet" method="post">
-  
-    <h1 align="center">Edit Task</h1>
+  <form action="DeleteTaskServlet" method="post">
+ 
+    <h1 align="center">Delete Task</h1>
     <h1>
-      <a href=taskList.jsp>Task List</a>
+      <a href=TaskList.jsp>Task List</a>
     </h1>
     <table border="1" align="center" cellpadding="5"
       style="font-size: 200%; font-family: inherit; font-style: normal; background-color: window;">
@@ -25,7 +25,7 @@
      <tr>
     	<td><label for="cars">Status</label></td>
 		<td>
-			<select name="status" id="status">
+			<select name="task_name" id="status">
 		  		<option value="Pending">Pending</option>
 		  		<option value="Completed">Completed</option>
 			</select>
@@ -37,7 +37,7 @@
       <tr>
         <td></td>
         <td align="center"><input type="submit" name="Action"
-          value="Edit"></td>
+          value="Delete"></td>
       </tr>
     </table>
 

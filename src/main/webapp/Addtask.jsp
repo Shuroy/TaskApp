@@ -6,7 +6,7 @@
 </head>
 	<body>
 		<h1>Add Task</h1>
-		<form  name ="task" action="TaskServlet"  method="post">
+		<form name ="task" action="TaskServlet"  method="post">
 			<table>
 				<tr>
 					<td>Name:</td>
@@ -19,6 +19,6 @@
 					<td><input type="reset" ></td>
 				</tr>
 			</table>
-		</form>
+		</form> 
 	</body>
 </html>

@@ -33,8 +33,8 @@
 		
 		</tr>
 		<h1>Add Task</h1>
-		<a href="/TaskApp/AddTask.jsp">Add</a>
-		<a href="TaskList.jsp">Show TaskList</a>
+		<a href="/TaskApp/addTask.jsp">Add</a>
+		<a href="taskList.jsp">Show TaskList</a>
 	</table>
 </form>
 

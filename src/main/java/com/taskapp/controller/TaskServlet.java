@@ -2,7 +2,10 @@ package com.taskapp.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
+import java.util.Calendar;
+//import java.sql.Date;
+import java.util.Date;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
@@ -23,19 +26,14 @@ public class TaskServlet extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 
 		String taskName = req.getParameter("task_name");
-
-		SimpleDateFormat format = new SimpleDateFormat("MMDDYYYY");
-		format.getCalendar();
 		String priority = "Low";
 		String createdBy = "Shubham";
-		String status = "PENDING";
-		Date d = new Date(0);
-		out.write(priority);
-		out.write(createdBy);
-		out.write(status);
-		out.write(taskName);
+		String status = "Pending";
+//		Date date = Calendar.getInstance().getTime();  
+//		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");  
+//        String strDate = dateFormat.format(date);
 
-		Task task = new Task("",taskName, priority, createdBy, status, String.valueOf(d));
+		Task task = new Task("",taskName, priority, createdBy, status, "");
 
 		TasksDaoImpl taskDao = new TasksDaoImpl();
 

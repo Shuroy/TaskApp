@@ -17,7 +17,7 @@ public class TasksDaoImpl implements TasksDao {
 	public boolean insertTask(Task task) {
 		// TODO Auto-generated method stub
 
-		String insert = "insert into user_task(taskname,priority,createdby,status,createddate) values(?,?,?,?,?)";
+		String insert = "insert into user_task(taskname,priority,createdby,status) values(?,?,?,?)";
 		Connection con = Connection123.getDBConnection();
 		boolean result = false;
 		try {
@@ -27,16 +27,7 @@ public class TasksDaoImpl implements TasksDao {
 			pstmt.setString(2, task.getPriority());
 			pstmt.setString(3, task.getCreatedBy());
 			pstmt.setString(4, task.getStatus());
-			pstmt.setDate(5, new Date(0));
-
-
-			/*
-			 * System.out.println(task.getTaskName());
-			 * System.out.println(task.getPriority());
-			 * System.out.println(task.getCreatedBy());
-			 * System.out.println(task.getCreatedDate());
-			 */
-
+			//pstmt.setDate(5, new Date(0));
 			result = pstmt.executeUpdate() > 0;
 
 		} catch (SQLException e) {
@@ -69,32 +60,24 @@ public class TasksDaoImpl implements TasksDao {
 	      return true;
 	    }
 	  }
-
-		/*
-		 * public TasksDaoImpl() {
-		 * 
-		 * // TODO Auto-generated method stub List tasks = new ArrayList();
-		 * 
-		 * String insert = "select * from user_task";
-		 * 
-		 * Connection con = Connection123.getDBConnection();
-		 * 
-		 * boolean result = false; try {
-		 * 
-		 * PreparedStatement ps = con.prepareStatement(insert); ResultSet rs =
-		 * ps.executeQuery(); while (rs.next()) { Task userBean = new Task();
-		 * userBean.setTaskName(rs.getString("taskName"));
-		 * userBean.setPriority(rs.getString("priority"));
-		 * userBean.setCreatedBy(rs.getString("createdBy"));
-		 * userBean.setStatus(rs.getString("status"));
-		 * userBean.setCreatedDate(rs.getString("createdDate")); tasks.add(userBean); }
-		 * 
-		 * 
-		 * } catch (SQLException e) { // TODO Auto-generated catch block
-		 * e.printStackTrace(); }
-		 * 
-		 * }
-		 */
+	public boolean deleteTask(String id) {
+		 Connection connection = Connection123.getDBConnection();
+	    String sql = "delete from user_task where id=?";
+	    int i = 0;
+	    try {
+	      PreparedStatement preparedStatement = connection.prepareStatement(sql);
+	      preparedStatement.setInt(1, Integer.parseInt(id));
+	      i = preparedStatement.executeUpdate();
+	    } catch (SQLException e) {
+	      // TODO Auto-generated catch block
+	      e.printStackTrace();
+	    }
+	    if (i == 0) {
+		      return false;
+		    } else {
+		      return true;
+		    }
+	  }
 
 	@Override
 	public List<Task> taskList() throws SQLException {

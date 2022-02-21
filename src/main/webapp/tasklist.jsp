@@ -18,13 +18,13 @@ a {
 -->
 </style>
 <body bgcolor="#00FFFF">
-  <form action="">
+  <!-- <form action=""> -->
     <h1 align="center">Task Management</h1>
     <h2 align="center">
-      <a href="AddTask.jsp">Add New Task</a><br>
+      <a href="addTask.jsp">Add New Task</a><br>
     </h2>
     <h1 align="center">List of Tasks</h1>
-    <table border="1" align="center" cellpadding="5" style="font-size: 150%; background-color: window;">
+    <table border="0" align="center" cellpadding="5" style="font-size: 140%; background-color: window;">
       <tr>
 			<th id="2">Task Name</th>
 			<th id="3">Priority</th>
@@ -63,18 +63,24 @@ a {
         </td>
         <td>
           <%
-            out.print(resultSet.getString(5));
+            out.print(resultSet.getString(6));
           %>
         </td>
         
-        <form action="MyServlet" method="post">
-          <td><a value="Edit" name="Action"
-            href="Edit.jsp?id=<%=resultSet.getInt(6)%> ">Edit</a> 
-            <input
-            type="hidden" id="id" name="id" value="<%= resultSet.getInt(6) %>">&nbsp;&nbsp;&nbsp;
-            <a href="delete.jsp">Delete</a>&nbsp;&nbsp;&nbsp;</td>
-      </tr>
-      </form>
+       
+          <td>
+	          	<a value="Edit" name="Action" href="edit.jsp?id=<%=resultSet.getInt(5)%> ">Edit</a> 
+	          	 <td/>
+	          	 
+	          	  <td>
+	             <form action="DeleteTaskServlet" method="post">
+	             	<input type="hidden" id="id" name="id" value="<%= resultSet.getInt(5) %>">&nbsp;&nbsp;
+	            	<input type="submit" value="Delete">
+	              </form>
+	               <td/>
+           
+     
+    
       
       <%
 }
@@ -82,6 +88,6 @@ a {
 
 
     </table>
-  </form>
+<!--   </form> -->
 </body>
-</html>S
+</html>
