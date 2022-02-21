@@ -14,39 +14,31 @@ import javax.servlet.http.HttpServletResponse;
 import com.taskapp.dao.TasksDaoImpl;
 import com.taskapp.model.Task;
 
-@WebServlet("/TaskServlet")
-public class TaskServlet extends HttpServlet {
+@WebServlet("/EditTaskServlet")
+public class EditTaskServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		PrintWriter out = resp.getWriter();
-
 		String taskName = req.getParameter("task_name");
-
-		SimpleDateFormat format = new SimpleDateFormat("MMDDYYYY");
-		format.getCalendar();
-		String priority = "Low";
-		String createdBy = "Shubham";
-		String status = "PENDING";
-		Date d = new Date(0);
-		out.write(priority);
-		out.write(createdBy);
-		out.write(status);
+		String status = req.getParameter("status");
+		//int id = Integer.parseInt(req.getParameter("id"));
+		String id = req.getParameter("id");
+		
 		out.write(taskName);
-
-		Task task = new Task("",taskName, priority, createdBy, status, String.valueOf(d));
-
-		TasksDaoImpl taskDao = new TasksDaoImpl();
-
-		boolean flag = taskDao.insertTask(task);
-
-		if (flag) {
-			out.write("\ninserted successfully");
-			resp.sendRedirect("register.jsp");
-
-		} else {
-			out.write("\nnot inserted");
-		}
+		out.write(status);
+		out.write( id);
+//		 Integer.valueOf(id);
+//		out.write("\nUpdated successfully");
+		Task task = new Task(id, taskName,"","",status,"");
+		TasksDaoImpl taskDao = new TasksDaoImpl(); 
+		  boolean flag = taskDao.editTask(task); 
+		  if (flag) {
+			  out.write("\nUpdated successfully");
+//			  resp.sendRedirect("register.jsp");
+		  } 
+		  else { out.write("\nnot inserted"); }
+		 
 	}
 }

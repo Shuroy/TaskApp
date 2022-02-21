@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class Task {
 
+	private String Id;
 	private String taskName;
 	private String priority;
 	private String createdBy;
@@ -34,6 +35,16 @@ public class Task {
 		this.createdBy = createdBy;
 	}
 
+	
+	public String getId() {
+		return Id;
+	}
+
+	public void setId(String Id) {
+		this.Id = Id;
+	}
+
+	
 	public String getStatus() {
 		return status;
 	}
@@ -50,8 +61,9 @@ public class Task {
 		this.createdDate = string;
 	}
 
-	public Task(String taskName, String priority, String createdBy, String status, String createdDate) {
+	public Task(String Id,String taskName, String priority, String createdBy, String status, String createdDate) {
 		super();
+		this.Id = Id;
 		this.taskName = taskName;
 		this.priority = priority;
 		this.createdBy = createdBy;
@@ -66,3 +78,4 @@ public class Task {
 
 
 }
+ 

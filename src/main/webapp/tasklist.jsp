@@ -67,11 +67,12 @@ a {
           %>
         </td>
         
-
         <form action="MyServlet" method="post">
-          <td>
-          <a value="Edit" name="Action" href="">Edit</a> 
-          <a href="delete.jsp">Delete</a>&nbsp;&nbsp;&nbsp;</td>
+          <td><a value="Edit" name="Action"
+            href="Edit.jsp?id=<%=resultSet.getInt(6)%> ">Edit</a> 
+            <input
+            type="hidden" id="id" name="id" value="<%= resultSet.getInt(6) %>">&nbsp;&nbsp;&nbsp;
+            <a href="delete.jsp">Delete</a>&nbsp;&nbsp;&nbsp;</td>
       </tr>
       </form>
       

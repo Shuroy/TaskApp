@@ -30,10 +30,12 @@ public class TasksDaoImpl implements TasksDao {
 			pstmt.setDate(5, new Date(0));
 
 
-			System.out.println(task.getTaskName());
-			System.out.println(task.getPriority());
-			System.out.println(task.getCreatedBy());
-			System.out.println(task.getCreatedDate());
+			/*
+			 * System.out.println(task.getTaskName());
+			 * System.out.println(task.getPriority());
+			 * System.out.println(task.getCreatedBy());
+			 * System.out.println(task.getCreatedDate());
+			 */
 
 			result = pstmt.executeUpdate() > 0;
 
@@ -44,38 +46,55 @@ public class TasksDaoImpl implements TasksDao {
 
 		return result;
 	}
+	
+	public boolean editTask(Task task) {
+	    Connection connection = Connection123.getDBConnection();
+	    String sql = "update user_task set taskname=?, status=? where id=?";
+//	    sql += " where id=? ";
+	    int i = 0;
+	    try {
+	      PreparedStatement preparedStatement = connection.prepareStatement(sql);
+	      preparedStatement.setString(1, task.getTaskName());
+	      preparedStatement.setString(2, task.getStatus());
+	      preparedStatement.setInt(3, Integer.parseInt(task.getId()));
+	      
+	      i = preparedStatement.executeUpdate();
+	    } catch (SQLException e) {
+	      // TODO Auto-generated catch block
+	      e.printStackTrace();
+	    }
+	    if (i == 0) {
+	      return false;
+	    } else {
+	      return true;
+	    }
+	  }
 
-	public TasksDaoImpl() {
-
-		// TODO Auto-generated method stub
-		List tasks = new ArrayList();
-
-		String insert = "select * from user_task";
-
-		Connection con = Connection123.getDBConnection();
-
-		boolean result = false;
-		try {
-
-			PreparedStatement ps = con.prepareStatement(insert);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				Task userBean = new Task();
-				userBean.setTaskName(rs.getString("taskName"));
-				userBean.setPriority(rs.getString("priority"));
-				userBean.setCreatedBy(rs.getString("createdBy"));
-				userBean.setStatus(rs.getString("status"));
-				userBean.setCreatedDate(rs.getString("createdDate"));
-				tasks.add(userBean);
-			}
-
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
+		/*
+		 * public TasksDaoImpl() {
+		 * 
+		 * // TODO Auto-generated method stub List tasks = new ArrayList();
+		 * 
+		 * String insert = "select * from user_task";
+		 * 
+		 * Connection con = Connection123.getDBConnection();
+		 * 
+		 * boolean result = false; try {
+		 * 
+		 * PreparedStatement ps = con.prepareStatement(insert); ResultSet rs =
+		 * ps.executeQuery(); while (rs.next()) { Task userBean = new Task();
+		 * userBean.setTaskName(rs.getString("taskName"));
+		 * userBean.setPriority(rs.getString("priority"));
+		 * userBean.setCreatedBy(rs.getString("createdBy"));
+		 * userBean.setStatus(rs.getString("status"));
+		 * userBean.setCreatedDate(rs.getString("createdDate")); tasks.add(userBean); }
+		 * 
+		 * 
+		 * } catch (SQLException e) { // TODO Auto-generated catch block
+		 * e.printStackTrace(); }
+		 * 
+		 * }
+		 */
 
 	@Override
 	public List<Task> taskList() throws SQLException {
