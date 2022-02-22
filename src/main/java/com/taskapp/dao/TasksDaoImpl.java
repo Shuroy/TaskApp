@@ -62,11 +62,12 @@ public class TasksDaoImpl implements TasksDao {
 	  }
 	public boolean deleteTask(String id) {
 		 Connection connection = Connection123.getDBConnection();
-	    String sql = "delete from user_task where id=?";
+	    String sql = "Update User_task SET ISDeleted=? where id=?";
 	    int i = 0;
 	    try {
 	      PreparedStatement preparedStatement = connection.prepareStatement(sql);
-	      preparedStatement.setInt(1, Integer.parseInt(id));
+	      preparedStatement.setInt(1, 1);
+	      preparedStatement.setInt(2, Integer.parseInt(id));
 	      i = preparedStatement.executeUpdate();
 	    } catch (SQLException e) {
 	      // TODO Auto-generated catch block

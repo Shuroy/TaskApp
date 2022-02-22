@@ -36,7 +36,7 @@ a {
       <%
         Connection con = Connection123.getDBConnection();
         Statement statement = con.createStatement();
-        ResultSet resultSet = statement.executeQuery("select * from user_task");
+        ResultSet resultSet = statement.executeQuery("select * from User_task where IsDeleted = 0");
         while (resultSet.next()) {
       %>
 
