@@ -14,27 +14,20 @@ import javax.servlet.http.HttpServletResponse;
 import com.taskapp.dao.TasksDaoImpl;
 import com.taskapp.model.Task;
 
-@WebServlet("/EditTaskServlet")
-public class EditTaskServlet extends HttpServlet {
+@WebServlet("/IsActiveTaskServlet")
+public class IsActiveTaskServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		PrintWriter out = resp.getWriter();
-		String taskName = req.getParameter("task_name");
-		String status = req.getParameter("status");
-		String priority=req.getParameter("priority");
-		//int id = Integer.parseInt(req.getParameter("id"));
-		String id = req.getParameter("id");
 		
-		out.write(taskName);
-		out.write(status);
+		String id = req.getParameter("id");
 		out.write( id);
-//		 Integer.valueOf(id);
-//		out.write("\nUpdated successfully");
-		Task task = new Task(id, taskName,priority,"",status,"");
+		
+		//Task task = new Task(id, "","","","","");
 		TasksDaoImpl taskDao = new TasksDaoImpl(); 
-		  boolean flag = taskDao.editTask(task); 
+		  boolean flag = taskDao.IsActiveTask(id); 
 		  if (flag) {
 			  out.write("\nUpdated successfully");
 			  resp.sendRedirect("taskList.jsp");

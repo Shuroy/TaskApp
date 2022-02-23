@@ -26,7 +26,12 @@
 
 
 <h1>Active Task</h1>
-<input id='myInput' onkeyup='searchTable()' type='text'>
+
+<input id='myInput' onkeyup='searchTable()' type='text' placeholder="Find Task">
+
+
+<input id='Findstatus' onkeyup='searchStatusTable()' type='text' placeholder="Find Task Status">
+
       
 	<table id='myTable' class="table table-hover">
 	  <thead>
@@ -42,7 +47,7 @@
 	     <%
 	        Connection con = Connection123.getDBConnection();
 	        Statement statement = con.createStatement();
-	        ResultSet resultSet = statement.executeQuery("select * from User_task where IsDeleted = 0");
+	        ResultSet resultSet = statement.executeQuery("select * from User_task where IsActive = 0");
 	        while (resultSet.next()) {
 	      %>
 	      
@@ -60,7 +65,7 @@
 	          	<a value="Edit" name="Action" href="edit.jsp?id=<%=resultSet.getInt(5)%> ">Edit</a> 
 	          </td>
 	           <td>
-	          	 <form action="DeleteTaskServlet" method="post">
+	          	 <form action="IsActiveTaskServlet" method="post">
 		             	<input type="hidden" id="id" name="id" value="<%= resultSet.getInt(5) %>">&nbsp;&nbsp;
 		            	<input type="submit" value="Delete">
 		              </form>
@@ -97,7 +102,7 @@
 	     <%
 	        Connection con1 = Connection123.getDBConnection();
 	        Statement statement1 = con1.createStatement();
-	        ResultSet resultSet1 = statement.executeQuery("select * from User_task where IsDeleted = 1");
+	        ResultSet resultSet1 = statement.executeQuery("select * from User_task where IsActive = 1");
 	        while (resultSet1.next()) {
 	      %>
 	      
@@ -108,7 +113,7 @@
 	        <td><%out.print(resultSet1.getString(2));%></td>
 	        <td><%out.print(resultSet1.getString(3));%></td>
 	        
-	        <td><%out.print(resultSet1.getString(4));%></td>
+	        <td>In_Active</td>
 	         <td><%out.print(resultSet1.getString(6));%></td>
 	         
 	          <td>
@@ -155,6 +160,31 @@ function searchTable() {
     }
 }
 //////////////////////////
+
+
+
+function searchStatusTable() {
+    var input, filter, found, table, tr, td, i, j;
+    input = document.getElementById("Findstatus");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td");
+        for (j = 0; j < td.length; j++) {
+            if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                found = true;
+            }
+        }
+        if (found) {
+            tr[i].style.display = "";
+            found = false;
+        } else {
+            tr[i].style.display = "none";
+        }
+    }
+}
+
 function searchTable1() {
     var input, filter, found, table, tr, td, i, j;
     input = document.getElementById("myInput1");

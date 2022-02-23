@@ -23,7 +23,7 @@
       </tr>
      
      <tr>
-    	<td><label for="cars">Status</label></td>
+    	<td><label for="status">Status</label></td>
 		<td>
 			<select name="status" id="status">
 		  		<option value="Pending">Pending</option>
@@ -32,8 +32,15 @@
 		</td>
      </tr>
      
-     
-     
+     <tr>
+    	<td><label for="priority">Priority</label></td>
+		<td>
+			<select name="priority" id="priority">
+		  		<option value="Low">Low</option>
+		  		<option value="High">High</option>
+			</select>
+		</td>
+     </tr>
       <tr>
         <td></td>
         <td align="center"><input type="submit" name="Action"
