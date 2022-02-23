@@ -36,7 +36,7 @@ public class EditTaskServlet extends HttpServlet {
 		  boolean flag = taskDao.editTask(task); 
 		  if (flag) {
 			  out.write("\nUpdated successfully");
-			  resp.sendRedirect("register.jsp");
+			  resp.sendRedirect("taskList.jsp");
 		  } 
 		  else { out.write("\nnot inserted"); }
 		 

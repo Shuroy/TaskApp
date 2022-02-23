@@ -5,9 +5,13 @@
 <title>Task App</title>
 </head>
 <body>
+<style>
+
+</style>
 <h1>Register Account</h1>
 <form action="register" method="post" name="user_form">
-	<table>
+    <table border="0" align="center" cellpadding="5" style="font-size: 140%; background-color: window;">
+	
 		<tr>
 		
 		<td>Name:</td>

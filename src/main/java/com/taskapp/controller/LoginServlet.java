@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet {
 		{
             
 			out.write("\nLogin successfully");
-			resp.sendRedirect("addtask.jsp");
+			resp.sendRedirect("addTask.jsp");
 
 		}
 		else

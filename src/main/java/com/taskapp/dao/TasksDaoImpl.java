@@ -60,6 +60,28 @@ public class TasksDaoImpl implements TasksDao {
 	      return true;
 	    }
 	  }
+	public boolean findTask(Task task) {
+	    Connection connection = Connection123.getDBConnection();
+	    String sql = "update user_task set taskname=?, status=? where id=?";
+//	    sql += " where id=? ";
+	    int i = 0;
+	    try {
+	      PreparedStatement preparedStatement = connection.prepareStatement(sql);
+	      preparedStatement.setString(1, task.getTaskName());
+	      preparedStatement.setString(2, task.getStatus());
+	      preparedStatement.setInt(3, Integer.parseInt(task.getId()));
+	      
+	      i = preparedStatement.executeUpdate();
+	    } catch (SQLException e) {
+	      // TODO Auto-generated catch block
+	      e.printStackTrace();
+	    }
+	    if (i == 0) {
+	      return false;
+	    } else {
+	      return true;
+	    }
+	}
 	public boolean deleteTask(String id) {
 		 Connection connection = Connection123.getDBConnection();
 	    String sql = "Update User_task SET ISDeleted=? where id=?";
