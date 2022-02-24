@@ -26,7 +26,7 @@
     	<td><label for="cars">Status</label></td>
 		<td>
 			<select name="task_name" id="status">
-		  		<option value="Pending">Pending</option>
+		  		<option value="Pending">Pendin g</option>
 		  		<option value="Completed">Completed</option>
 			</select>
 		</td>

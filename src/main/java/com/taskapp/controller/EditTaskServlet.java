@@ -24,6 +24,7 @@ public class EditTaskServlet extends HttpServlet {
 		String taskName = req.getParameter("task_name");
 		String status = req.getParameter("status");
 		String priority=req.getParameter("priority");
+		String createdby=req.getParameter("created_by");
 		//int id = Integer.parseInt(req.getParameter("id"));
 		String id = req.getParameter("id");
 		
@@ -32,7 +33,7 @@ public class EditTaskServlet extends HttpServlet {
 		out.write( id);
 //		 Integer.valueOf(id);
 //		out.write("\nUpdated successfully");
-		Task task = new Task(id, taskName,priority,"",status,"");
+		Task task = new Task(id, taskName,priority,createdby,status,"");
 		TasksDaoImpl taskDao = new TasksDaoImpl(); 
 		  boolean flag = taskDao.editTask(task); 
 		  if (flag) {

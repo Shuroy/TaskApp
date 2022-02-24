@@ -29,10 +29,6 @@ public class TaskServlet extends HttpServlet {
 		String priority = "Low";
 		String createdBy = "Shubham";
 		String status = "Pending";
-//		Date date = Calendar.getInstance().getTime();  
-//		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");  
-//        String strDate = dateFormat.format(date);
-
 		Task task = new Task("",taskName, priority, createdBy, status, "");
 
 		TasksDaoImpl taskDao = new TasksDaoImpl();

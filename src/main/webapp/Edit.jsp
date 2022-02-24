@@ -41,6 +41,12 @@
 			</select>
 		</td>
      </tr>
+     
+      <tr>
+        <td>Created By</td>
+        <td><input type="text" name="created_by"></td>
+      </tr>
+     
       <tr>
         <td></td>
         <td align="center"><input type="submit" name="Action"

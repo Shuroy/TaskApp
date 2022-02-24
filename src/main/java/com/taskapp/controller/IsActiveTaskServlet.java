@@ -23,11 +23,12 @@ public class IsActiveTaskServlet extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		
 		String id = req.getParameter("id");
+		String Status = "In-active";
 		out.write( id);
 		
 		//Task task = new Task(id, "","","","","");
 		TasksDaoImpl taskDao = new TasksDaoImpl(); 
-		  boolean flag = taskDao.IsActiveTask(id); 
+		  boolean flag = taskDao.IsActiveTask(id,Status); 
 		  if (flag) {
 			  out.write("\nUpdated successfully");
 			  resp.sendRedirect("taskList.jsp");

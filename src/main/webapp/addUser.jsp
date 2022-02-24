@@ -5,13 +5,13 @@
 <title>TaskApp</title>
 </head>
 	<body>
-		<h1>Add Task</h1>
-		<form name ="task" action="TaskServlet"  method="post">
+		<h1>User Name</h1>
+		<form name ="User" action="UserServlet"  method="post">
 			<table>
 				<tr>
 					<td>Name:</td>
 					<td>
-						<input type="text" name="task_name" id="task_name" placeholder="Enter your Task name" required title="it only accept 3 or more chars">
+						<input type="text" name="user_name" id="user_name" placeholder="Enter your user name" required title="it only accept 3 or more chars">
 					</td>
 				</tr>
 				<tr>

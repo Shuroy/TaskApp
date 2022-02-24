@@ -40,7 +40,7 @@ public class TasksDaoImpl implements TasksDao {
 	
 	public boolean editTask(Task task) {
 	    Connection connection = Connection123.getDBConnection();
-	    String sql = "update user_task set taskname=?,priority=?, status=? where id=?";
+	    String sql = "update user_task set taskname=?,priority=?, status=?, createdby=? where id=?";
 //	    sql += " where id=? ";
 	    int i = 0;
 	    try {
@@ -48,7 +48,28 @@ public class TasksDaoImpl implements TasksDao {
 	      preparedStatement.setString(1, task.getTaskName());
 	      preparedStatement.setString(2, task.getPriority());
 	      preparedStatement.setString(3, task.getStatus());
-	      preparedStatement.setInt(4, Integer.parseInt(task.getId()));
+	      preparedStatement.setString(4, task.getCreatedBy());
+	      preparedStatement.setInt(5, Integer.parseInt(task.getId()));
+	      
+	      i = preparedStatement.executeUpdate();
+	    } catch (SQLException e) {
+	      // TODO Auto-generated catch block
+	      e.printStackTrace();
+	    }
+	    if (i == 0) {
+	      return false;
+	    } else {
+	      return true;
+	    }
+	  }
+	public boolean addUser(Task task) {
+	    Connection connection = Connection123.getDBConnection();
+	    String sql = "update user_task set createdby=? where id=?";
+	    int i = 0;
+	    try {
+	      PreparedStatement preparedStatement = connection.prepareStatement(sql);
+	      preparedStatement.setString(1, task.getCreatedBy());
+	      preparedStatement.setInt(2, Integer.parseInt(task.getId()));
 	      
 	      i = preparedStatement.executeUpdate();
 	    } catch (SQLException e) {
@@ -83,14 +104,15 @@ public class TasksDaoImpl implements TasksDao {
 	      return true;
 	    }
 	}
-	public boolean IsActiveTask(String id) {
+	public boolean IsActiveTask(String id, String Status) {
 		 Connection connection = Connection123.getDBConnection();
-	    String sql = "Update User_task SET IsActive=? where id=?";
+	    String sql = "Update User_task SET IsActive=?,status=? where id=?";
 	    int i = 0;
 	    try {
 	      PreparedStatement preparedStatement = connection.prepareStatement(sql);
 	      preparedStatement.setInt(1, 1);
-	      preparedStatement.setInt(2, Integer.parseInt(id));
+	      preparedStatement.setString(2, Status);
+	      preparedStatement.setInt(3, Integer.parseInt(id));
 	      i = preparedStatement.executeUpdate();
 	    } catch (SQLException e) {
 	      // TODO Auto-generated catch block
@@ -110,6 +132,8 @@ public class TasksDaoImpl implements TasksDao {
 	      PreparedStatement preparedStatement = connection.prepareStatement(sql);
 	      //preparedStatement.setInt(1, 1);
 	      preparedStatement.setInt(1, Integer.parseInt(id));
+	     
+
 	      i = preparedStatement.executeUpdate();
 	    } catch (SQLException e) {
 	      // TODO Auto-generated catch block

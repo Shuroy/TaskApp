@@ -20,11 +20,12 @@
           
           <div class=" container row align-items-center mt-4">
             <div class="col">
-              <a href="/TaskApp/addTask.jsp">Add Task</a>
+              <a href="/TaskApp/addTask.jsp"> <button type="button"class="btn btn-primary mt-4">Add Task</button>
             </div>
             
              <div class="col">
-             <a href="taskList.jsp">Show TaskList</a>
+             <a href="taskList.jsp"> <button type="button"class="btn btn-primary mt-4">Show Task List</button>
+             
             </div>
             
           </div>
